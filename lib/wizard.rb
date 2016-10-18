@@ -85,4 +85,8 @@ class Wizard
     @user.present? && first_admin == @user && !completed? && (Topic.count < 15)
   end
 
+  def self.user_requires_completion?(user)
+    Wizard::Builder.new(user).build.requires_completion?
+  end
+
 end
